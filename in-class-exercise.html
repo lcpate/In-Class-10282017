@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+
+    $("#search").on("click", function() {
+      var apiKey = "7db6353afdba44dbb93cf9a5a9886e19";	
+      var search = $("#term").text();
+      var beginDate = $("#begin-date").text() + "0101";
+      var endDate = $("#end-year").text() + "1231";
+      var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + apiKey + "&q=" + search; 
+	  var queryURLWithBD = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + apiKey + "&q=" + search + "&begin_date=" + beginDate;
+	  var queryURLWithED = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + apiKey + "&q=" + search  + "&end_date=" + endDate;
+	  var queryURLWithBoth = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + apiKey + "&q=" + search + "&begin_date=" + beginDate + "&end_date=" + endDate;
+
+	  if ($("#begin-date").text() === "" && $("#end-date").text() === "") {
+	  	queryURL = queryURL;
+	  } else if (($("#begin-date").val().length > 0) && ($("#end-date").val() === "")) {
+    	queryURL = queryURLWithBD;
+      } else if (($("#begin-date").val() === "") && ($("#end-date").val().length > 0)) {
+    	queryURL = queryURLWithED;
+      } else if (($("#begin-date").val().length > 0) && ($("#end-date").val()length > 0)) {
+		queryURL = queryURLWithBoth;
+      }
+
+  	  $.ajax({
+  		url: queryURL,
+  		method: "GET"
+  	  }).done(function(response) {
+  		console.log(response);
+   		console.log(response.response.docs[2].headline.main);
+  		console.log(response.response.docs[2].byline.original);
+  		console.log(response.response.docs[2].section_name);
+  		console.log(response.response.docs[2].pub_date);
+  		console.log(response.response.docs[2].web_url);
+  		var resultsDiv = $("<div>");
+  		
+  	  });
+
+    });
+
+  </script>
+</body>
+</html>
+
+
+

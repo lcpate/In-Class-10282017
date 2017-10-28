@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>NY Times Search</title>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+<div class="panel panel-default">
+  <div class="panel-body">
+   New York Times Search
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Search Parameters</h3>
+  </div>
+  <div class="panel-body">
+    
+<form id = "input">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Search Term</label>
+    <input type="search" class="form-control" id="searchTerm" name="searchTerm">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Number of Records to Retrive</label>
+    	<select class="form-control" name="number">
+		  <option>1</option>
+		  <option>2</option>
+		  <option>3</option>
+		  <option>4</option>
+		  <option>5</option>
+		  <option>6</option>
+		  <option>7</option>
+		  <option>8</option>
+		  <option>9</option>
+		  <option>10</option>
+		</select>
+   
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Start Year (Optional):</label>
+    <input type="year" class="form-control" id="startYear" name="startYear" >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">End Year (Optional):</label>
+    <input type="year" class="form-control" id="endYear" name="endYear">
+  </div>
+  
+  <button type="submit" class="btn btn-default-submit">Submit</button>
+  <button type="clear" class="btn btn-default-clear">Clear Results</button>
+</form>
+
+<div id = results> </div>
+
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+      $(".btn-default-submit").on("click", function(){
+          $("#results").text($("form").serialize())
+            console.log();
+      });
+
+
+
+  // $(".btn-default-submit").on("click", function(){
+  //     $("form#input").serialize-object();
+  //     $("form#input").serializeJSON();
+  //     console.log(this);
+
+  });
+
+
+
+
+</script>
+
+
+
+	
+</body>
+</html>
